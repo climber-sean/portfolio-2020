@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home-container">
     <div class="top-half" @mousemove="moveHero" @mouseleave="removeMoveClass">
       <div class="container">
         <div class="title-container">
@@ -7,6 +7,17 @@
           <a href="" class="btn-ghost">My Work</a>
         </div>
       </div>
+    </div>
+    <div class="social-bar">
+      <a href="">
+        <font-awesome-icon class="social-bar__icons" :icon="['fab', 'linkedin']"/>
+      </a>
+      <a href="">
+        <font-awesome-icon class="social-bar__icons" :icon="['fab', 'github']"/>
+      </a>
+      <a href="">
+        <font-awesome-icon class="social-bar__icons" :icon="['fas', 'envelope']"/>
+      </a>
     </div>
     <div class="bottom-half">
       <div class="container">
@@ -18,18 +29,14 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
-  },
   methods: {
     moveHero() {
       var hero = document.querySelector('.top-half');
       var heroInfo = hero.getBoundingClientRect();
       var topHalf = Math.floor(heroInfo.height / 2);
       var leftHalf = Math.floor(heroInfo.width / 2);
+      console.log(event);
       if (event.clientY < topHalf) {
         hero.classList.remove('move-down');
         hero.classList.add('move-up');
@@ -52,6 +59,38 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~assets/variables.scss';
+
+.home-container {
+  position: relative;
+}
+
+.social-bar {
+  position: absolute;
+  width: 200px;
+  left: calc(50% - 100px);
+  top: calc(60vh - 30px);
+  height: 60px;
+  background: $secondary-colour;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  box-shadow: 0 0 12px 5px rgba(0,0,0,0.2);
+
+  &__icons {
+    color: white;
+    margin: 0 8px;
+    font-size: 28px;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.3);
+      color: $primary-colour;
+    }
+  }
+}
+
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -82,7 +121,7 @@ export default {
 
 .top-half {
   height: 60vh;
-  background: linear-gradient(170deg, rgba(38,38,38,1) 16%, rgba(43,57,77,1) 75%);
+  background: $bg-gradient;
   position: relative;
   overflow:hidden;
   &:before {
@@ -100,10 +139,6 @@ export default {
     z-index: 1;
   }
   h1 {
-    font-size: 72px;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    color: white;
     span {
       display: block;
       font-weight: 400;
@@ -114,7 +149,7 @@ export default {
 
 .bottom-half {
   height: 40vh;
-  background: #2e3442;
+  background: $primary-colour;
   color: darken(white,10%);
 }
 </style>

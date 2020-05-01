@@ -1,0 +1,18 @@
+// Colours
+
+$primary-colour: #2e3442;
+$secondary-colour: #5d5d5d;
+$accent-colour: #495675;
+
+// Gradient
+
+$bg-gradient: linear-gradient(170deg, rgba(38,38,38,1) 16%, rgba(43,57,77,1) 75%);
+
+// Typography
+
+h1 {
+    font-size: 72px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: white;
+}

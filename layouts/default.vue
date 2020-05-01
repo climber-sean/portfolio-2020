@@ -1,10 +1,26 @@
 <template>
-  <div>
+  <div class="layout-container">
+    <app-nav/>
     <nuxt />
   </div>
 </template>
 
+<script>
+import SiteNav from "@/components/navigation.vue";
+
+export default {
+  components: {
+    appNav: SiteNav
+  }
+}
+</script>
+
 <style lang="scss">
+
+.layout-container {
+  position: relative;
+}
+
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -15,6 +31,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  background: black;
 }
 
 *,
