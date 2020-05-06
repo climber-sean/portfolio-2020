@@ -1,10 +1,10 @@
 <template>
   <div class="home-container">
-    <div class="top-half" @mousemove="moveHero" @mouseleave="removeMoveClass">
+    <div ref="hero" class="top-half" @mousemove="moveHero" @mouseleave="removeMoveClass">
       <div class="container">
         <div class="title-container">
-          <h1>Sean Butlin <span>Frontend Developer</span></h1>
-          <a href="" class="btn-ghost">My Work</a>
+          <h1 ref="titleChange">Sean Butlin <span>Frontend Developer</span></h1>
+          <nuxt-link to="/work" class="btn-ghost">My Work</nuxt-link>
         </div>
       </div>
     </div>
@@ -29,14 +29,19 @@
 </template>
 
 <script>
+
 export default {
+  data() {
+    return {
+      leaving: false
+    }
+  },
   methods: {
     moveHero() {
       var hero = document.querySelector('.top-half');
       var heroInfo = hero.getBoundingClientRect();
       var topHalf = Math.floor(heroInfo.height / 2);
       var leftHalf = Math.floor(heroInfo.width / 2);
-      console.log(event);
       if (event.clientY < topHalf) {
         hero.classList.remove('move-down');
         hero.classList.add('move-up');
@@ -45,14 +50,26 @@ export default {
         hero.classList.remove('move-up');
         hero.classList.add('move-down');
       }
-      if (event.clientX < leftHalf) {
-
-      }
     },
     removeMoveClass() {
       var hero = document.querySelector('.top-half');
       hero.classList.remove('move-up');
       hero.classList.remove('move-down');
+    },
+  },
+  transition: {
+    css: false,
+    beforeEnter(el) {
+      el.style.opacity = 0;
+    },
+    enter(el, done) {
+      Velocity(document.querySelector('h1'), { scale: 1.15 })
+      Velocity(document.querySelector('h1'), { scale: 1 }, { duration: 1000 })
+      Velocity(el, { opacity: 1 }, {duration: 2000, complete: done})
+    },
+    leave(el, done) {
+      Velocity(document.querySelector('h1'), { scale: 1.15 }, { duration: 2000 })
+      Velocity(el, { opacity: 0 }, { duration: 2000, complete: done })
     }
   }
 }
@@ -131,7 +148,7 @@ export default {
     top: -50px;
     left: 0;
     z-index: 0;
-    opacity: 0.12;
+    opacity: 0.2;
     transition: all 1s ease-out;
   }
   .title-container {
@@ -139,6 +156,10 @@ export default {
     z-index: 1;
   }
   h1 {
+    &.leave {
+      transform: scale(1.2);
+      transition: transform 1s ease-out;
+    }
     span {
       display: block;
       font-weight: 400;

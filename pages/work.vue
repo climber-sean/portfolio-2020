@@ -14,6 +14,12 @@ export default {
     components: {
         appPageHeader: PageHeader
     },
+    transition: {
+        enter(el, done) {
+            Velocity(el, { opacity: 1 }, { duration: 500, complete: done })
+        },
+        leave() {}
+    }
 }
 </script>
 

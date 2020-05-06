@@ -29,6 +29,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+      { src: '~/plugins/velocity-ani', mode: 'client'}
   ],
   /*
   ** Nuxt.js dev-modules

@@ -1,0 +1,1 @@
+import Velocity from 'velocity-animate';
