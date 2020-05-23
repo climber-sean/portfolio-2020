@@ -3,7 +3,7 @@
     <div ref="hero" class="top-half" @mousemove="moveHero" @mouseleave="removeMoveClass">
       <div class="container">
         <div class="title-container">
-          <h1 ref="titleChange">Sean Butlin <span>Frontend Developer</span></h1>
+          <h1 :class="{shrink: entering}" ref="title">Sean Butlin <span>Frontend Developer</span></h1>
           <nuxt-link to="/work" class="btn-ghost">My Work</nuxt-link>
         </div>
       </div>
@@ -22,7 +22,13 @@
     <div class="bottom-half">
       <div class="container">
         <h2>About Me</h2>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore quis reprehenderit qui iste repudiandae praesentium! Quae, voluptatum quasi. Quo, consectetur veniam. Voluptate voluptatem eos velit ut voluptatibus obcaecati consequatur quis?</p>
+        <p>I'm a Frontend Developer based in Staffordshire with a strong passion for all things technology. I have experience building fully responsive sites for the web with a good knowledge of HTML, CSS, JavaScript and much more including CSS pre-processors and the latest JavaScript frameworks. For the past 2 years I have been working within the automotive industry creating websites for car dealerships all across the UK with a focus on clean design, semantic code and a great user experience. Get in touch if you would like to work together or have an opportunity you think I could be interested in. </p>
+      </div>
+    </div>
+    <div class="bottom-half">
+      <div class="container">
+        <h2>About Me</h2>
+        <p>I'm a Frontend Developer based in Staffordshire with a strong passion for all things technology. I have experience building fully responsive sites for the web with a good knowledge of HTML, CSS, JavaScript and much more including CSS pre-processors and the latest JavaScript frameworks. For the past 2 years I have been working within the automotive industry creating websites for car dealerships all across the UK with a focus on clean design, semantic code and a great user experience. Get in touch if you would like to work together or have an opportunity you think I could be interested in. </p>
       </div>
     </div>
   </div>
@@ -31,9 +37,16 @@
 <script>
 
 export default {
+  mounted() {
+    this.entering = true;
+  },
+  beforeDestroy() {
+    this.$refs.title.classList.remove('shrink');
+    this.$refs.title.classList.add('grow');
+  },
   data() {
     return {
-      leaving: false
+      entering: false
     }
   },
   methods: {
@@ -55,21 +68,6 @@ export default {
       var hero = document.querySelector('.top-half');
       hero.classList.remove('move-up');
       hero.classList.remove('move-down');
-    },
-  },
-  transition: {
-    css: false,
-    beforeEnter(el) {
-      el.style.opacity = 0;
-    },
-    enter(el, done) {
-      Velocity(document.querySelector('h1'), { scale: 1.15 })
-      Velocity(document.querySelector('h1'), { scale: 1 }, { duration: 1000 })
-      Velocity(el, { opacity: 1 }, {duration: 2000, complete: done})
-    },
-    leave(el, done) {
-      Velocity(document.querySelector('h1'), { scale: 1.15 }, { duration: 2000 })
-      Velocity(el, { opacity: 0 }, { duration: 2000, complete: done })
     }
   }
 }
@@ -156,9 +154,11 @@ export default {
     z-index: 1;
   }
   h1 {
-    &.leave {
-      transform: scale(1.2);
-      transition: transform 1s ease-out;
+    &.shrink {
+      animation: shrink-fade-in 0.75s ease-in forwards;
+    }
+    &.grow {
+      animation: grow-fade-out 0.75s ease-out forwards;
     }
     span {
       display: block;

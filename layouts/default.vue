@@ -1,6 +1,6 @@
 <template>
   <div class="layout-container">
-    <app-nav/>
+    <app-nav ref="nav" />
     <nuxt />
   </div>
 </template>
@@ -11,7 +11,7 @@ import SiteNav from "@/components/navigation.vue";
 export default {
   components: {
     appNav: SiteNav
-  }
+  },
 }
 </script>
 

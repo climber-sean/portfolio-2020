@@ -29,7 +29,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-      { src: '~/plugins/velocity-ani', mode: 'client'}
+    '~/plugins/scrollDirective.js'
   ],
   /*
   ** Nuxt.js dev-modules

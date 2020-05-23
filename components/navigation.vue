@@ -1,5 +1,5 @@
 <template>
-    <nav>
+    <nav v-scroll="handleScroll">
         <nuxt-link to="/">Home</nuxt-link>
         <nuxt-link to="/work">Work</nuxt-link>
         <nuxt-link to="/contact">Contact</nuxt-link>
@@ -8,7 +8,17 @@
 
 <script>
 export default {
-    
+    methods: {
+        handleScroll(evt, el) {
+            console.log('scrolling');
+            if(window.scrollY > el.offsetHeight) {
+                el.classList.add('darken');
+            };
+            if(window.scrollY < el.offsetHeight) {
+                el.classList.remove('darken');
+            }
+        }
+    }
 }
 </script>
 
@@ -24,6 +34,11 @@ nav {
     width: 100%;
     z-index: 10;
     background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(55,71,96,0) 100%);
+    transition: all 0.3s linear;
+
+    &.darken {
+        background: rgba(0,0,0,0.6);
+    }
 
     a {
         color: white;
