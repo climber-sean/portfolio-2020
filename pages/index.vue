@@ -1,14 +1,14 @@
 <template>
   <div class="home-container">
-    <div ref="hero" class="top-half" @mousemove="moveHero" @mouseleave="removeMoveClass">
+    <div :class="{'fade-in': entering}" ref="hero" class="top-half" @mousemove="moveHero" @mouseleave="removeMoveClass">
       <div class="container">
-        <div class="title-container">
-          <h1 :class="{shrink: entering}" ref="title">Sean Butlin <span>Frontend Developer</span></h1>
+        <div :class="{shrink: entering}" class="title-container">
+          <h1 ref="title">Sean Butlin <span>Frontend Developer</span></h1>
           <nuxt-link to="/work" class="btn-ghost">My Work</nuxt-link>
         </div>
       </div>
     </div>
-    <div class="social-bar">
+    <div :class="{rotate: entering}" class="social-bar">
       <a href="">
         <font-awesome-icon class="social-bar__icons" :icon="['fab', 'linkedin']"/>
       </a>
@@ -20,9 +20,9 @@
       </a>
     </div>
     <div class="bottom-half">
-      <div class="container">
+      <div :class="{'fade-in': entering}" class="container">
         <h2>About Me</h2>
-        <p>I'm a Frontend Developer based in Staffordshire with a strong passion for all things technology. I have experience building fully responsive sites for the web with a good knowledge of HTML, CSS, JavaScript and much more including CSS pre-processors and the latest JavaScript frameworks. For the past 2 years I have been working within the automotive industry creating websites for car dealerships all across the UK with a focus on clean design, semantic code and a great user experience. Get in touch if you would like to work together or have an opportunity you think I could be interested in. </p>
+        <p>Frontend Developer based in Staffordshire with a strong passion for all things technology. I have experience building fully responsive sites for the web with a good knowledge of HTML, CSS, JavaScript and much more including CSS pre-processors and the latest JavaScript frameworks. For the past 2 years I have been working within the automotive industry creating websites for car dealerships all across the UK with a focus on clean design, semantic code and a great user experience. Get in touch if you would like to work together or have an opportunity you think I could be interested in. </p>
       </div>
     </div>
   </div>
@@ -57,11 +57,21 @@ export default {
         hero.classList.remove('move-up');
         hero.classList.add('move-down');
       }
+      if (event.clientX > leftHalf) {
+        hero.classList.remove('move-right');
+        hero.classList.add('move-left');
+      }
+      if (event.clientX < leftHalf) {
+        hero.classList.remove('move-left');
+        hero.classList.add('move-right');
+      }
     },
     removeMoveClass() {
       var hero = document.querySelector('.top-half');
       hero.classList.remove('move-up');
       hero.classList.remove('move-down');
+      hero.classList.remove('move-right');
+      hero.classList.remove('move-left');
     }
   }
 }
@@ -86,6 +96,17 @@ export default {
   align-items: center;
   border-radius: 3px;
   box-shadow: 0 0 12px 5px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform-origin: top left;
+  transform: rotate(30deg);
+
+  @media handheld, only screen and (max-width: $laptop) {
+    top: calc(50vh - 30px);
+  }
+
+  &.rotate {
+    animation: rotate-in 0.5s 0.25s ease-in forwards;
+  }
 
   &__icons {
     color: white;
@@ -116,15 +137,29 @@ export default {
 
 .top-half.move-up {
   &:before {
-    top: -100px;
+    top: -20%;
     transition: all 2s ease-out;
   }
 }
 
 .top-half.move-down {
   &:before {
-    top: 0px;
+    top: 0;
     transition: all 2s ease-out;
+  }
+}
+
+.top-half.move-left {
+  &:before {
+    left: 0;
+    transition: all 4s ease-out;
+  }
+}
+
+.top-half.move-right {
+  &:before {
+    left: -20%;
+    transition: all 4s ease-out;
   }
 }
 
@@ -133,27 +168,37 @@ export default {
   background: $bg-gradient;
   position: relative;
   overflow:hidden;
+  @media handheld, only screen and (max-width: $laptop) {
+    height: 50vh;
+  }
   &:before {
     display: block;
-    content: url('~assets/hero-overlay.png');
+    content: url('~assets/hero-overlay.svg');
     position: absolute;
-    top: -50px;
-    left: 0;
+    top: -10%;
+    left: -10%;
     z-index: 0;
-    opacity: 0.2;
     transition: all 1s ease-out;
+    width: 120%;
+    height: 120%;
+    opacity: 0.3;
+    @media handheld, only screen and (max-width: $tablet) {
+      // Makes sure background SVG on top half fits across all tablet devices
+      width: 170%;
+    }  
   }
   .title-container {
+    opacity: 0;
     position: relative;
     z-index: 1;
-  }
-  h1 {
     &.shrink {
       animation: shrink-fade-in 0.75s ease-in forwards;
     }
     &.grow {
       animation: grow-fade-out 0.75s ease-out forwards;
     }
+  }
+  h1 {
     span {
       display: block;
       font-weight: 400;
@@ -166,5 +211,18 @@ export default {
   height: 40vh;
   background: $primary-colour;
   color: darken(white,10%);
+
+  @media handheld, only screen and (max-width: $laptop) {
+    height: 50vh;
+  }
+
+  .container {
+    opacity: 0;
+    padding: 0 80px;
+  }
+
+  .container.fade-in {
+    animation: fade-in 0.75s 0.5s ease-in forwards;
+  }
 }
 </style>
