@@ -23,6 +23,7 @@ export default {
     align-items: center;
     overflow: hidden;
     position: relative;
+    box-shadow: 0 0 12px 4px rgba(0,0,0,0.05);
 
     h1 {
         position: relative;
@@ -34,10 +35,10 @@ export default {
         position: absolute;
         top: 0;
         left: 0;
-        content: url('~assets/hero-overlay.png');
+        content: url('~assets/hero-overlay.svg');
         width: 100%;
         z-index: 0;
-        opacity: 0.12;
+        opacity: 0.3;
     }
 }
 

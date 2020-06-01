@@ -21,6 +21,11 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 5px;
     color: white;
+
+    @media handheld, only screen and (max-width: $mobile) {
+        font-size: 48px;
+        line-height: 48px;
+    }
 }
 
 h2 {
@@ -30,12 +35,29 @@ h2 {
     letter-spacing: 3px;
     font-weight: 400;
     text-transform: uppercase;
+
+    @media handheld, only screen and (max-width: $mobile) {
+        font-size: 28px;
+    }
 }
 
 p {
     color: #c2c2c2;
     font-size: 18px;
+
+    @media handheld, only screen and (max-width: $mobile) {
+        font-size: 16px;
+    }
 }
+
+// Global
+
+.res-img {
+    width: 100%;
+    height: auto;
+}
+
+// Page Transition
 
 .page-enter,
 .page-leave-to {
@@ -79,15 +101,5 @@ p {
     100% {
         transform: scale(1.15);
         opacity: 0;
-    }
-}
-
-@keyframes rotate-in {
-    0% {
-        transform: rotate(-30deg);
-    }
-    100% {
-        transform: rotate(0);
-        opacity: 1;
     }
 }

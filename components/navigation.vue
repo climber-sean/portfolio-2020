@@ -23,6 +23,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~assets/variables.scss';
+
 nav {
     display: flex;
     justify-content: center;
@@ -48,8 +50,8 @@ nav {
         letter-spacing: 4px;
         transition: all 0.2s linear;
 
-        &:hover {
-
+        @media handheld, only screen and (max-width: $mobile) {
+            margin: 0 15px;
         }
     }
 }

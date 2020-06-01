@@ -34,10 +34,6 @@ export default {
   mounted() {
     this.entering = true;
   },
-  beforeDestroy() {
-    this.$refs.title.classList.remove('shrink');
-    this.$refs.title.classList.add('grow');
-  },
   data() {
     return {
       entering: false
@@ -97,15 +93,17 @@ export default {
   border-radius: 3px;
   box-shadow: 0 0 12px 5px rgba(0,0,0,0.2);
   opacity: 0;
-  transform-origin: top left;
-  transform: rotate(30deg);
 
   @media handheld, only screen and (max-width: $laptop) {
     top: calc(50vh - 30px);
   }
 
+  @media handheld, only screen and (max-width: $mobile) {
+    top: calc(100vh - 45px);
+  }
+
   &.rotate {
-    animation: rotate-in 0.5s 0.25s ease-in forwards;
+    animation: fade-in 0.5s 0.25s ease-in forwards;
   }
 
   &__icons {
@@ -171,6 +169,9 @@ export default {
   @media handheld, only screen and (max-width: $laptop) {
     height: 50vh;
   }
+  @media handheld, only screen and (max-width: $mobile) {
+    height: 100vh;
+  }
   &:before {
     display: block;
     content: url('~assets/hero-overlay.svg');
@@ -185,7 +186,10 @@ export default {
     @media handheld, only screen and (max-width: $tablet) {
       // Makes sure background SVG on top half fits across all tablet devices
       width: 170%;
-    }  
+    }
+    @media handheld, only screen and (max-width: $mobile) {
+      content: url('~assets/hero-overlay-mobile.svg');
+    }
   }
   .title-container {
     opacity: 0;
@@ -203,6 +207,10 @@ export default {
       display: block;
       font-weight: 400;
       font-size: 22px;
+
+      @media handheld, only screen and (max-width: $mobile) {
+        font-size: 18px;
+      }
     }
   }
 }
@@ -216,9 +224,17 @@ export default {
     height: 50vh;
   }
 
+  @media handheld, only screen and (max-width: $mobile) {
+    height: auto;
+  }
+
   .container {
     opacity: 0;
     padding: 0 80px;
+
+    @media handheld, only screen and (max-width: $mobile) {
+      padding: 40px 20px;
+    }
   }
 
   .container.fade-in {
