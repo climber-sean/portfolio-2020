@@ -57,7 +57,9 @@ nav {
     transition: all 0.3s linear;
 
     &.darken {
-        background: rgba(0,0,0,0.6);
+        // background: rgba(0,0,0,0.6);
+        background: lighten(black, 10%);
+        box-shadow: 0 0 8px 4px rgba(0,0,0,0.2);
     }
 
     a {
@@ -71,6 +73,7 @@ nav {
 
         @media handheld, only screen and (max-width: $mobile) {
             margin: 0 15px;
+            font-size: 14px;
         }
     }
 }

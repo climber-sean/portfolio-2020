@@ -4,16 +4,29 @@
             <div class="close-icon" @click="closeContact">
                 <font-awesome-icon @click="closeContact" :icon="['fas', 'times']"></font-awesome-icon>
             </div>
-            <h3>Contact Me</h3>
-            <form action="https://getsimpleform.com/messages?form_api_token=1ca7f3f2a9b1c486f33a635fa419f553" method="post">
-                <label for="Name">Name:</label>
-                <input v-model="name" type="text" placeholder="Name" name="Name">
-                <label for="Email">Email:</label>
-                <input v-model="email" type="email" placeholder="example@example.com" name="Email">
-                <label for="message">Message:</label>
-                <textarea v-model="message" name="message" id="" cols="30" rows="10" placeholder="Your message here...."></textarea>
-                <input :disabled="!checkForm" type="submit" value="Submit"> 
-            </form>
+            <div>
+                <!-- <h3>Contact Me</h3> -->
+                <form action="https://getsimpleform.com/messages?form_api_token=1ca7f3f2a9b1c486f33a635fa419f553" method="post">
+                    <label for="Name">Name:</label>
+                    <input v-model="name" type="text" placeholder="Name" name="Name">
+                    <label for="Email">Email:</label>
+                    <input v-model="email" type="email" placeholder="example@example.com" name="Email">
+                    <label for="message">Message:</label>
+                    <textarea v-model="message" name="message" id="" cols="30" rows="10" placeholder="Your message here...."></textarea>
+                    <input :disabled="!checkForm" type="submit" value="Submit"> 
+                </form>
+            </div>
+            <div class="contact-link">
+                <a class="contact-link__item">
+                    <font-awesome-icon class="contact-link__item--icon" :icon="['fab', 'linkedin']"></font-awesome-icon> LinkedIn
+                </a>
+                <a class="contact-link__item">
+                    <font-awesome-icon class="contact-link__item--icon" :icon="['fas', 'envelope']"></font-awesome-icon> seanbutlin@googlemail.com
+                </a>
+                <a class="contact-link__item">
+                    <font-awesome-icon class="contact-link__item--icon" :icon="['fab', 'github']"></font-awesome-icon> GitHub
+                </a>
+            </div>
         </div>
     </div>
 </template>
@@ -77,9 +90,19 @@ export default {
         background: $primary-colour;
         padding: 20px;
         border-radius: 5px;
-        width: 310px;
+        // width: 310px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         position: relative;
         opacity: 0;
+        form {
+            border-right: 1px solid white;
+            padding-right: 15px;
+        }
+        @media handheld, only screen and (max-width: $mobile) {
+            width: 280px;
+        }
         &.enter {
             animation: shrink-fade-in 0.5s ease-in forwards;
         }
@@ -130,6 +153,25 @@ export default {
 
             &:hover {
                 background-color: $accent-colour;
+            }
+        }
+    }
+
+    .contact-link {
+        padding-left: 15px;
+
+        &__item {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            color: whitesmoke;
+            font-size: 16px;
+            margin: 5px 0;
+
+            &--icon {
+                font-size: 28px;
+                margin-right: 5px;
+                color: lighten($primary-colour, 30%);
             }
         }
     }

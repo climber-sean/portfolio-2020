@@ -25,6 +25,10 @@ export default {
     position: relative;
     box-shadow: 0 0 12px 4px rgba(0,0,0,0.05);
 
+    @media handheld, only screen and (max-width: $mobile) {
+        height: 150px;
+    }
+
     h1 {
         position: relative;
         z-index: 1;

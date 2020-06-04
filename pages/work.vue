@@ -116,5 +116,13 @@ export default {
 .work-content {
     padding: 100px 0;
     background: $primary-colour;
+
+    @media handheld, only screen and (max-width: $tablet) {
+        padding: 40px 0;
+    }
+
+    @media handheld, only screen and (max-width: $mobile) {
+        padding: 20px 0;
+    }
 }
 </style>
