@@ -5,14 +5,14 @@
                 <font-awesome-icon @click="closeContact" :icon="['fas', 'times']"></font-awesome-icon>
             </div>
             <h3>Contact Me</h3>
-            <form action="">
+            <form action="https://getsimpleform.com/messages?form_api_token=1ca7f3f2a9b1c486f33a635fa419f553" method="post">
                 <label for="Name">Name:</label>
-                <input type="text" placeholder="Name" name="Name">
+                <input v-model="name" type="text" placeholder="Name" name="Name">
                 <label for="Email">Email:</label>
-                <input type="email" placeholder="example@example.com" name="Email">
+                <input v-model="email" type="email" placeholder="example@example.com" name="Email">
                 <label for="message">Message:</label>
-                <textarea name="message" id="" cols="30" rows="10" placeholder="Your message here...."></textarea>
-                <input type="submit" value="Submit"> 
+                <textarea v-model="message" name="message" id="" cols="30" rows="10" placeholder="Your message here...."></textarea>
+                <input :disabled="!checkForm" type="submit" value="Submit"> 
             </form>
         </div>
     </div>
@@ -25,15 +25,24 @@ export default {
             this.$refs[el].classList.add('enter')
         })
     },
-    // beforeDestroy() {
-    //     Object.keys(this.$refs).forEach(el => {
-    //         this.$refs[el].classList.remove('enter');
-    //         this.$refs[el].classList.add('leave');
-    //     })
-    // },
+    data() {
+        return {
+            name: null,
+            email: null,
+            message: null,
+            submitButton: false
+        }
+    },
     methods: {
         closeContact() {
         this.$emit('close');
+        }
+    },
+    computed: {
+        checkForm() {
+            if (this.name && this.email && this.message) {
+               return true
+            }
         }
     }
 }
@@ -105,6 +114,10 @@ export default {
             resize: none;
         }
         input[type="submit"] {
+            &:disabled {
+                opacity: 0.5;
+                pointer-events: none;
+            }
             box-shadow: none;
             margin: 10px 0 0 0;
             padding: 10px 18px;
