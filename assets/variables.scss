@@ -41,6 +41,15 @@ h2 {
     }
 }
 
+h3 {
+    color: white;
+    font-size: 24px;
+    margin: 6px 0;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
 p {
     color: #c2c2c2;
     font-size: 18px;
@@ -82,6 +91,15 @@ p {
     }
 }
 
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 @keyframes shrink-fade-in {
     0% {
         transform: translateX(-300px);
@@ -90,6 +108,17 @@ p {
     100% {
         transform: translateX(0);
         opacity: 1;
+    }
+}
+
+@keyframes right-fade-out {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(300px);
+        opacity: 0;
     }
 }
 

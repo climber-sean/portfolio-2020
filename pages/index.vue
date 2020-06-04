@@ -2,44 +2,57 @@
   <div class="home-container">
     <div :class="{'fade-in': entering}" ref="hero" class="top-half" @mousemove="moveHero" @mouseleave="removeMoveClass">
       <div class="container">
-        <div :class="{shrink: entering}" class="title-container">
+        <div :class="{shrink: entering, grow: leaving}" ref="title-container" class="title-container">
           <h1 ref="title">Sean Butlin <span>Frontend Developer</span></h1>
-          <nuxt-link to="/work" class="btn-ghost">My Work</nuxt-link>
+          <nuxt-link to="/work" title="Work" class="btn-ghost">My Work</nuxt-link>
         </div>
       </div>
     </div>
     <div :class="{rotate: entering}" class="social-bar">
-      <a href="">
+      <a href="https://www.linkedin.com/in/sean-butlin-73307a16a/" title="LinkedIn" target="_blank">
         <font-awesome-icon class="social-bar__icons" :icon="['fab', 'linkedin']"/>
       </a>
-      <a href="">
+      <a href="https://github.com/climber-sean" title="GitHub" target="_blank">
         <font-awesome-icon class="social-bar__icons" :icon="['fab', 'github']"/>
       </a>
-      <a href="">
+      <a href="" @click.prevent="contactForm" title="Contact me">
         <font-awesome-icon class="social-bar__icons" :icon="['fas', 'envelope']"/>
       </a>
     </div>
     <div class="bottom-half">
-      <div :class="{'fade-in': entering}" class="container">
+      <div :class="{'fade-in': entering}" ref="about" class="container">
         <h2>About Me</h2>
         <p>Frontend Developer based in Staffordshire with a strong passion for all things technology. I have experience building fully responsive sites for the web with a good knowledge of HTML, CSS, JavaScript and much more including CSS pre-processors and the latest JavaScript frameworks. For the past 2 years I have been working within the automotive industry creating websites for car dealerships all across the UK with a focus on clean design, semantic code and a great user experience. Get in touch if you would like to work together or have an opportunity you think I could be interested in. </p>
       </div>
     </div>
+    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
+import Footer from '@/components/footer.vue';
 
 export default {
   mounted() {
     this.entering = true;
   },
+  beforeDestroy() {
+   this.$refs["title-container"].classList.add('grow');
+   this.$refs["about"].classList.add('grow');
+  },
+  components: {
+    appFooter: Footer
+  },
   data() {
     return {
-      entering: false
+      entering: false,
+      leaving: false
     }
   },
   methods: {
+    contactForm() {
+      $nuxt.$emit('useContact');
+    },
     moveHero() {
       var hero = document.querySelector('.top-half');
       var heroInfo = hero.getBoundingClientRect();
@@ -78,6 +91,7 @@ export default {
 
 .home-container {
   position: relative;
+  overflow-x: hidden;
 }
 
 .social-bar {
@@ -231,6 +245,10 @@ export default {
   .container {
     opacity: 0;
     padding: 0 80px;
+
+    &.grow {
+      animation: grow-fade-out 0.75s ease-out forwards !important;
+    }
 
     @media handheld, only screen and (max-width: $mobile) {
       padding: 40px 20px;

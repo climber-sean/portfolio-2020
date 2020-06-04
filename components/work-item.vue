@@ -14,13 +14,13 @@
             </ul>
             <div class="work-item__content--links">
                 <div v-if="git" class="icon-container">
-                    <a :href="git">
+                    <a :href="git" target="_blank" :title="name">
                     <font-awesome-icon class="icon" :icon="['fab', 'github']"/>
                     GitHub
                     </a>
                 </div>
                 <div v-if="live" class="icon-container">
-                    <a :href="live">
+                    <a :href="live" target="_blank" :title="name">
                     <font-awesome-icon class="icon" :icon="['fas', 'window-maximize']"/>
                     Live
                     </a>
