@@ -2,13 +2,13 @@
     <footer>
         <div class="social-links">
             <a href="https://www.linkedin.com/in/sean-butlin-73307a16a/" title="LinkedIn" target="_blank">
-                <font-awesome-icon class="social-links__icons" :icon="['fab', 'linkedin']"/>
+                <font-awesome-icon class="social-links__icons" aria-hidden="true" :icon="['fab', 'linkedin']"/>
             </a>
             <a href="https://github.com/climber-sean" title="GitHub" target="_blank">
-                <font-awesome-icon class="social-links__icons" :icon="['fab', 'github']"/>
+                <font-awesome-icon class="social-links__icons" aria-hidden="true" :icon="['fab', 'github']"/>
             </a>
             <a @click.prevent="contactForm" title="Contact me">
-                <font-awesome-icon class="social-links__icons" :icon="['fas', 'envelope']"/>
+                <font-awesome-icon class="social-links__icons" aria-hidden="true" :icon="['fas', 'envelope']"/>
             </a>
         </div>
         <div class="content">
@@ -31,7 +31,7 @@ export default {
 @import '~assets/variables.scss';
 
     footer {
-        background-color: darken($primary-colour, 10%);
+        background-color: darken($primary-colour, 5%);
         padding: 15px 0;
         text-align: center;
         position: relative;

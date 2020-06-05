@@ -43,6 +43,10 @@ export default {
         width: 100%;
         z-index: 0;
         opacity: 0.3;
+
+        @media handheld, only screen and (max-width: $mobile) {
+            content: url('~assets/hero-overlay-mobile.svg');
+        }
     }
 }
 

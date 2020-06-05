@@ -17,14 +17,14 @@
                 </form>
             </div>
             <div class="contact-link">
-                <a class="contact-link__item">
-                    <font-awesome-icon class="contact-link__item--icon" :icon="['fab', 'linkedin']"></font-awesome-icon> LinkedIn
+                <a href="https://www.linkedin.com/in/sean-butlin-73307a16a/" target="_blank" title="LinkedIn" class="contact-link__item">
+                    <font-awesome-icon aria-hidden="true" class="contact-link__item--icon" :icon="['fab', 'linkedin']"></font-awesome-icon> LinkedIn
                 </a>
-                <a class="contact-link__item">
-                    <font-awesome-icon class="contact-link__item--icon" :icon="['fas', 'envelope']"></font-awesome-icon> seanbutlin@googlemail.com
+                <a href="mailto:seanbutlin@googlemail.com" title="Email me" class="contact-link__item">
+                    <font-awesome-icon aria-hidden="true" class="contact-link__item--icon" :icon="['fas', 'envelope']"></font-awesome-icon> seanbutlin@googlemail.com
                 </a>
-                <a class="contact-link__item">
-                    <font-awesome-icon class="contact-link__item--icon" :icon="['fab', 'github']"></font-awesome-icon> GitHub
+                <a href="https://github.com/climber-sean" target="_blank" title="GitHub" class="contact-link__item">
+                    <font-awesome-icon aria-hidden="true" class="contact-link__item--icon" :icon="['fab', 'github']"></font-awesome-icon> GitHub
                 </a>
             </div>
         </div>
@@ -33,11 +33,6 @@
 
 <script>
 export default {
-    mounted() {
-        Object.keys(this.$refs).forEach(el => {
-            this.$refs[el].classList.add('enter')
-        })
-    },
     data() {
         return {
             name: null,
@@ -67,7 +62,6 @@ export default {
     .contact-container {
         width: 100vw;
         height: 100vh;
-        background: rgba(0,0,0,0.7);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -75,36 +69,32 @@ export default {
         z-index: 10;
         top: 0;
         left: 0;
-        opacity: 0;
-
-        &.enter {
-            animation: fade-in 0.5s ease-in forwards;
-        }
-
-        &.leave {
-            animation: fade-out 0.5s ease-out forwards;
-        }
     }
 
     .contact-form {
         background: $primary-colour;
         padding: 20px;
         border-radius: 5px;
-        // width: 310px;
         display: flex;
         justify-content: center;
         align-items: center;
         position: relative;
-        opacity: 0;
+
+        @media handheld, only screen and (max-width: $mobile) {
+            flex-direction: column;
+        }
+
         form {
             border-right: 1px solid white;
             padding-right: 15px;
+            @media handheld, only screen and (max-width: $mobile) {
+                border-right: none;
+                border-bottom: 1px solid white;
+                padding: 0 0 10px 0;
+            }
         }
         @media handheld, only screen and (max-width: $mobile) {
             width: 280px;
-        }
-        &.enter {
-            animation: shrink-fade-in 0.5s ease-in forwards;
         }
         .close-icon {
             position: absolute;
@@ -160,6 +150,10 @@ export default {
     .contact-link {
         padding-left: 15px;
 
+        @media handheld, only screen and (max-width: $mobile) {
+            padding-top: 10px;
+        }
+
         &__item {
             display: flex;
             justify-content: flex-start;
@@ -167,11 +161,22 @@ export default {
             color: whitesmoke;
             font-size: 16px;
             margin: 5px 0;
+            text-decoration: none;
+            transition: all 0.2s linear;
+
+            &:hover {
+                color: $accent-colour;
+
+                .contact-link__item--icon {
+                    color: $accent-colour;
+                }
+            }
 
             &--icon {
                 font-size: 28px;
                 margin-right: 5px;
-                color: lighten($primary-colour, 30%);
+                color: whitesmoke;
+                transition: all 0.2s linear;
             }
         }
     }

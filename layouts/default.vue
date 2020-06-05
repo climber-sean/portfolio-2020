@@ -1,16 +1,31 @@
 <template>
   <div class="layout-container">
     <app-nav ref="nav" />
-    <nuxt />
+    <nuxt :class="{'overlay-blur': contact}" />
+    <transition name="slide-in">
+    <app-contact v-if="contact" @close="contact = !contact"></app-contact>
+    </transition>
   </div>
 </template>
 
 <script>
 import SiteNav from "@/components/navigation.vue";
+import Contact from "@/components/contact.vue";
 
 export default {
+  data() {
+    return {
+      contact: false
+    }
+  },
+  created() {
+    this.$nuxt.$on('useContact', () => {
+        this.contact = !this.contact;
+    })
+  },
   components: {
-    appNav: SiteNav
+    appNav: SiteNav,
+    appContact: Contact
   },
 }
 </script>
@@ -22,7 +37,7 @@ export default {
 }
 
 html {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -56,5 +71,9 @@ html {
     color: #2e3442;
   }
 
+}
+
+.overlay-blur {
+  opacity: 0.1;
 }
 </style>

@@ -10,19 +10,19 @@
     </div>
     <div :class="{rotate: entering}" class="social-bar" ref="social-bar">
       <a href="https://www.linkedin.com/in/sean-butlin-73307a16a/" title="LinkedIn" target="_blank">
-        <font-awesome-icon class="social-bar__icons" :icon="['fab', 'linkedin']"/>
+        <font-awesome-icon class="social-bar__icons" aria-hidden="true" :icon="['fab', 'linkedin']"/>
       </a>
       <a href="https://github.com/climber-sean" title="GitHub" target="_blank">
-        <font-awesome-icon class="social-bar__icons" :icon="['fab', 'github']"/>
+        <font-awesome-icon class="social-bar__icons" aria-hidden="true" :icon="['fab', 'github']"/>
       </a>
       <a href="" @click.prevent="contactForm" title="Contact me">
-        <font-awesome-icon class="social-bar__icons" :icon="['fas', 'envelope']"/>
+        <font-awesome-icon class="social-bar__icons" aria-hidden="true" :icon="['fas', 'envelope']"/>
       </a>
     </div>
     <div class="bottom-half">
       <div :class="{'fade-in': entering}" ref="about" class="container">
         <h2>About Me</h2>
-        <p>Frontend Developer based in Staffordshire with a strong passion for all things technology. I have experience building fully responsive sites for the web with a good knowledge of HTML, CSS, JavaScript and much more including CSS pre-processors and the latest JavaScript frameworks. For the past 2 years I have been working within the automotive industry creating websites for car dealerships all across the UK with a focus on clean design, semantic code and a great user experience. Get in touch if you would like to work together or have an opportunity you think I could be interested in. </p>
+        <p>Frontend Developer based in Staffordshire with a strong passion for all things technology. I have experience building fully responsive sites for the web with a good knowledge of HTML, CSS, JavaScript and much more including CSS pre-processors and the latest JavaScript frameworks. For the past 2 years I have been working within the automotive industry creating websites for car dealerships all across the UK with a focus on clean design, semantic code and a great user experience. Get in touch if you would like to work together or have an opportunity you think I could be suited for. </p>
         <h2>Skills</h2>
         <ul class="skills-list">
           <li class="skills-list__item">HTML5</li>

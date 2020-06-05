@@ -3,9 +3,8 @@
     <nav v-scroll="handleScroll">
         <nuxt-link to="/" title="Home">Home</nuxt-link>
         <nuxt-link to="/work" title="Work">Work</nuxt-link>
-        <a @click="contact = !contact" title="Contact me">Contact</a>
+        <a @click="contactForm" title="Contact me">Contact</a>
     </nav>
-    <app-contact v-if="contact" @close="contact = !contact"></app-contact>
 </header>
 </template>
 
@@ -13,16 +12,6 @@
 import Contact from '@/components/contact.vue';
 
 export default {
-    data() {
-        return {
-            contact: false
-        }
-    },
-    created() {
-        this.$nuxt.$on('useContact', () => {
-            this.contact = !this.contact;
-        })
-    },
     methods: {
         handleScroll(evt, el) {
             console.log('scrolling');
@@ -32,6 +21,9 @@ export default {
             if(window.scrollY < el.offsetHeight) {
                 el.classList.remove('darken');
             }
+        },
+        contactForm() {
+            $nuxt.$emit('useContact');
         }
     },
     components: {

@@ -90,7 +90,7 @@ export default {
             color: lighten(black, 10%);
             @media handheld, only screen and (max-width: $mobile) {
                 text-align: center;
-                margin-top: 5px;
+                margin-top: 10px;
                 font-size: 22px;
             }
             span {

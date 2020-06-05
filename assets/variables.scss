@@ -79,6 +79,19 @@ p {
     transition: all 1s ease-in-out;
 }
 
+// Transitions
+.slide-in-enter {
+    opacity: 0;
+    transform: translateX(-300px);
+}
+
+.slide-in-enter-active {
+    animation: shrink-fade-in 0.5s ease-in forwards;
+  }
+.slide-in-leave-active /* .fade-leave-active below version 2.1.8 */ {
+    animation: right-fade-out 0.5s ease-out forwards;
+  }
+
 // Animations
 
 @keyframes fade-in {
