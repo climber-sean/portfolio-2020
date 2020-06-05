@@ -8,7 +8,7 @@
         </div>
       </div>
     </div>
-    <div :class="{rotate: entering}" class="social-bar">
+    <div :class="{rotate: entering}" class="social-bar" ref="social-bar">
       <a href="https://www.linkedin.com/in/sean-butlin-73307a16a/" title="LinkedIn" target="_blank">
         <font-awesome-icon class="social-bar__icons" :icon="['fab', 'linkedin']"/>
       </a>
@@ -23,6 +23,24 @@
       <div :class="{'fade-in': entering}" ref="about" class="container">
         <h2>About Me</h2>
         <p>Frontend Developer based in Staffordshire with a strong passion for all things technology. I have experience building fully responsive sites for the web with a good knowledge of HTML, CSS, JavaScript and much more including CSS pre-processors and the latest JavaScript frameworks. For the past 2 years I have been working within the automotive industry creating websites for car dealerships all across the UK with a focus on clean design, semantic code and a great user experience. Get in touch if you would like to work together or have an opportunity you think I could be interested in. </p>
+        <h2>Skills</h2>
+        <ul class="skills-list">
+          <li class="skills-list__item">HTML5</li>
+          <li class="skills-list__item">CSS3</li>
+          <li class="skills-list__item">BEM</li>
+          <li class="skills-list__item">Less</li>
+          <li class="skills-list__item">Sass</li>
+          <li class="skills-list__item">Bootstrap</li>
+          <li class="skills-list__item">JavaScript</li>
+          <li class="skills-list__item">jQuery</li>
+          <li class="skills-list__item">Vue.js</li>
+          <li class="skills-list__item">Nuxt</li>
+          <li class="skills-list__item">React</li>
+          <li class="skills-list__item">API integration</li>
+          <li class="skills-list__item">Git</li>
+          <li class="skills-list__item">Photoshop</li>
+          <li class="skills-list__item">Illustrator</li>
+        </ul>
       </div>
     </div>
     <app-footer></app-footer>
@@ -39,6 +57,7 @@ export default {
   beforeDestroy() {
    this.$refs["title-container"].classList.add('grow');
    this.$refs["about"].classList.add('grow');
+   this.$refs["social-bar"].classList.add('leave');
   },
   components: {
     appFooter: Footer
@@ -120,6 +139,10 @@ export default {
     animation: fade-in 0.5s 0.25s ease-in forwards;
   }
 
+  &.leave {
+    animation: fade-out 0.5s ease-out forwards !important;
+  }
+
   &__icons {
     color: white;
     margin: 0 8px;
@@ -177,7 +200,7 @@ export default {
 
 .top-half {
   height: 60vh;
-  background: $bg-gradient;
+  background: $gradient-bg-hero;
   position: relative;
   overflow:hidden;
   @media handheld, only screen and (max-width: $laptop) {
@@ -230,16 +253,12 @@ export default {
 }
 
 .bottom-half {
-  height: 40vh;
-  background: $primary-colour;
+  padding: 100px 0;
+  background: $gradient-bg;
   color: darken(white,10%);
 
-  @media handheld, only screen and (max-width: $laptop) {
-    height: 50vh;
-  }
-
   @media handheld, only screen and (max-width: $mobile) {
-    height: auto;
+    padding: 50px 0;
   }
 
   .container {
@@ -257,6 +276,31 @@ export default {
 
   .container.fade-in {
     animation: fade-in 0.75s 0.5s ease-in forwards;
+  }
+  
+  p {
+    margin-bottom: 50px;
+  }
+
+  .skills-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+
+    &__item {
+      box-sizing: border-box;
+      flex: 0 0 calc(100% / 4 - 10px);
+      margin: 5px;
+      background: darken($primary-colour, 10%);
+      padding: 5px;
+      border-bottom: 5px solid $accent-colour2;
+
+      @media handheld, only screen and (max-width: $mobile) {
+        flex: 0 0 calc(100% / 2 - 10px);
+      }
+    }
   }
 }
 </style>

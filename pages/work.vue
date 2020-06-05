@@ -115,7 +115,7 @@ export default {
 
 .work-content {
     padding: 100px 0;
-    background: $primary-colour;
+    background: $gradient-bg;
 
     @media handheld, only screen and (max-width: $tablet) {
         padding: 40px 0;

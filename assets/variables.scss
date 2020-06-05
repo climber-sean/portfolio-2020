@@ -3,16 +3,15 @@
 $primary-colour: #2e3442;
 $secondary-colour: #5d5d5d;
 $accent-colour: #495675;
+$accent-colour2: #49397f;
+$gradient-bg: linear-gradient(40deg, rgba(63,51,101,1) 0%, rgba(46,52,66,1) 60%); //73,57,127
+$gradient-bg-hero: linear-gradient(170deg, rgba(38,38,38,1) 16%, rgba(43,57,77,1) 75%);
 
 // Media Queries
 
 $laptop: 1440px;
 $tablet: 1024px;
 $mobile: 740px;
-
-// Gradient
-
-$bg-gradient: linear-gradient(170deg, rgba(38,38,38,1) 16%, rgba(43,57,77,1) 75%);
 
 // Typography
 

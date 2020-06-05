@@ -17,13 +17,13 @@ export default {
 
 .page-header {
     height: 300px;
-    background: $bg-gradient;
+    background: $gradient-bg-hero;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 0 12px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 0 12px 4px rgba(0,0,0,0.1);
 
     @media handheld, only screen and (max-width: $mobile) {
         height: 150px;

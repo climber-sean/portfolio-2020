@@ -142,7 +142,7 @@ export default {
             margin-top: 10px;
             a {
                 text-decoration: none;
-                color: unset;
+                color: $accent-colour2;
                 transition: all 0.2s linear;
 
                 &:hover {
@@ -157,7 +157,7 @@ export default {
                 margin-right: 10px;
             }
             .icon {
-                color: $accent-colour;
+                color: $accent-colour2;
                 font-size: 24px;
                 transition: all 0.2s linear;
             }

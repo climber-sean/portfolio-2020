@@ -48,7 +48,7 @@ export default {
             cursor: pointer;
 
             &:hover {
-                color: $accent-colour;
+                color: $accent-colour2;
             }
         }
         margin: 5px 0;
