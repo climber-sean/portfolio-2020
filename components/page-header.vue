@@ -26,7 +26,14 @@ export default {
     box-shadow: 0 0 12px 4px rgba(0,0,0,0.1);
 
     @media handheld, only screen and (max-width: $mobile) {
-        height: 150px;
+        height: 250px;
+    }
+
+    // I-phone landscape
+    @media handheld, only screen and (min-device-width: 375px)
+    and (max-device-width: 812px)
+    and (orientation: landscape) {
+        height: 200px;
     }
 
     h1 {

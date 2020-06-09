@@ -134,6 +134,12 @@ export default {
   @media handheld, only screen and (max-width: $mobile) {
     top: calc(100vh - 45px);
   }
+  // I-phone landscape
+    @media handheld, only screen and (min-device-width: 375px)
+    and (max-device-width: 812px)
+    and (orientation: landscape) {
+        top: calc(100vh - 30px);
+    }
 
   &.rotate {
     animation: fade-in 0.5s 0.25s ease-in forwards;
@@ -209,6 +215,12 @@ export default {
   @media handheld, only screen and (max-width: $mobile) {
     height: 100vh;
   }
+  // I-phone landscape
+  @media handheld, only screen and (min-device-width: 375px)
+  and (max-device-width: 812px)
+  and (orientation: landscape) {
+    height: 100vh;
+  }
   &:before {
     display: block;
     content: url('~assets/hero-overlay.svg');
@@ -226,6 +238,13 @@ export default {
     }
     @media handheld, only screen and (max-width: $mobile) {
       content: url('~assets/hero-overlay-mobile.svg');
+    }
+    // Use full size SVG on mobile landscape
+    @media handheld, only screen
+    and (min-device-width: 320px)
+    and (max-device-width: 736px)
+    and (orientation: landscape) {
+      content: url('~assets/hero-overlay.svg');
     }
   }
   .title-container {
