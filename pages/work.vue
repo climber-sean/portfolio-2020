@@ -57,7 +57,7 @@ export default {
             projects: {
                 portfolio: {
                     name: 'Portfolio',
-                    desc: 'This portfolio site you are currently on, built to showcase my work and current projects ongoing. This site was built using the Nuxt framework which is based off Vue.',
+                    desc: 'This portfolio site you are currently viewing, built to showcase my work and ongoing projects. This site was built using the Nuxt.js framework and hosted on Netlify.',
                     skills: ['HTML','SCSS','Nuxt.js'],
                     thumbnail: '/portfolio-site.jpg',
                     git: 'https://github.com/climber-sean/portfolio-2020'
