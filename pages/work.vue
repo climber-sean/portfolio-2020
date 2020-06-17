@@ -68,7 +68,8 @@ export default {
                     desc: 'Web application built in Vue.js that allows users to search for destinations or things to do, read reviews and add them to their bucket list. From their bucket list they can then keep track of when they visited a destination, and search hotels for that specific location.',
                     skills: ['HTML', 'SCSS', 'Vue', 'Vuex', 'Axios', 'TripAdvisor API', 'Hotels API'],
                     thumbnail: '/travel-list.jpg',
-                    git: 'https://github.com/climber-sean/travel-list'
+                    git: 'https://github.com/climber-sean/travel-list',
+                    live: 'https://travel.seanbutlin.co.uk'
                 },
                 inkfinity: {
                     name: 'Inkfinity Tattoo',
